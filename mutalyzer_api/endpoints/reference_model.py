@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, inputs, reqparse
 
-from mutalyzer.reference import get_reference_model_segmented
+from mutalyzer_retriever.retriever import get_reference_model_segmented
 
 from .common import errors
 

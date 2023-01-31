@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, inputs, reqparse
 
-from mutalyzer.normalizer import normalize
+from mutalyzer.normalizer import delins_model
 
 from .common import errors
 
@@ -25,10 +25,10 @@ _args.add_argument(
 )
 
 
-@ns.route("/normalize/<string:description>")
-class Normalizer(Resource):
+@ns.route("/delins_model/<string:description>")
+class DelinsModel(Resource):
     @ns.expect(_args)
     @errors
     def get(self, description):
-        """Normalize a variant description."""
-        return normalize(description, **_args.parse_args())
+        """Obtain the delins model of a variant description (zero-based half-open locations)."""
+        return delins_model(description, **_args.parse_args())
