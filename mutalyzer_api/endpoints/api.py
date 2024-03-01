@@ -18,6 +18,8 @@ from .reference_model import ns as ns_reference_model
 from .related_references import ns as ns_related_references
 from .spdi_converter import ns as ns_spdi_converter
 from .view_variants import ns as ns_view_variants
+from .dna_to_rna import ns as ns_dna_to_rna
+
 
 from pkg_resources import get_distribution
 
@@ -74,3 +76,4 @@ api.add_namespace(ns_view_variants)
 api.add_namespace(ns_spdi_converter)
 api.add_namespace(ns_back_translate)
 api.add_namespace(ns_version)
+api.add_namespace(ns_dna_to_rna)

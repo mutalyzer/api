@@ -33,6 +33,7 @@ class Normalizer(Resource):
         """Normalize a variant description."""
         return normalize(description, **_args.parse_args())
 
+
 @ns.route("/normalize_alt/<string:description>")
 class NormalizeAlt(Resource):
     @ns.expect(_args)
