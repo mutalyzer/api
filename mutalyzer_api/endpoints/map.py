@@ -39,9 +39,9 @@ _args.add_argument(
 )
 
 _args.add_argument(
-    "filter",
+    "filter_out",
     type=inputs.boolean,
-    help="Filter variants that appear due to the sequences differences.",
+    help="Filter out variants that appear due to the sequences differences.",
     default=False,
     required=False,
 )
