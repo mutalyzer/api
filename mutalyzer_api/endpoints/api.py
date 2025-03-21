@@ -29,7 +29,7 @@ logging.basicConfig(
 )
 
 
-API_VERSION = "2.1"
+API_VERSION = "2.2"
 
 
 # Trick to make the swagger files available under "/api".
