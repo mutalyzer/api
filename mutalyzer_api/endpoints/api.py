@@ -24,9 +24,14 @@ from .dna_to_rna import ns as ns_dna_to_rna
 from pkg_resources import get_distribution
 
 
-logging.basicConfig(level=logging.INFO, filename=log_dir())
+logging.basicConfig(
+    level=logging.INFO,
+    filename=log_dir(),
+    format='%(asctime)s %(levelname)-8s %(message)s'
+)
 
-API_VERSION = "2.1"
+
+API_VERSION = "2.2"
 
 
 # Trick to make the swagger files available under "/api".
