@@ -22,7 +22,12 @@ from .view_variants import ns as ns_view_variants
 from pkg_resources import get_distribution
 
 
-logging.basicConfig(level=logging.INFO, filename=log_dir())
+logging.basicConfig(
+    level=logging.INFO,
+    filename=log_dir(),
+    format='%(asctime)s %(levelname)-8s %(message)s'
+)
+
 
 API_VERSION = "2.1"
 
