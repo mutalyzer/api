@@ -16,6 +16,7 @@ from .delins_model import ns as ns_delins_model
 from .position_convert import ns as ns_position_convert
 from .reference_model import ns as ns_reference_model
 from .related_references import ns as ns_related_references
+from .new_related import ns as ns_new_related_references
 from .spdi_converter import ns as ns_spdi_converter
 from .view_variants import ns as ns_view_variants
 
@@ -52,7 +53,7 @@ class PatchedApi(Api):
 
 blueprint = Blueprint("api", __name__)
 
-api = PatchedApi(blueprint, version=API_VERSION, title="Mutalyzer3 API")
+api = PatchedApi(blueprint, version=API_VERSION, title="Mutalyzer3 API, Hello")
 
 ns_version = Namespace("/")
 
@@ -72,6 +73,7 @@ api.add_namespace(ns_delins_model)
 api.add_namespace(ns_description_to_model)
 api.add_namespace(ns_reference_model)
 api.add_namespace(ns_related_references)
+api.add_namespace(ns_new_related_references)
 api.add_namespace(ns_position_convert)
 api.add_namespace(ns_description_extract)
 api.add_namespace(ns_get_selectors)
