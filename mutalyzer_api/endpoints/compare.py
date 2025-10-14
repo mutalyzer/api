@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, reqparse
 
-from mutalyzer.algebra import compare
+from mutalyzer.compare import compare
 
 from .common import errors
 
