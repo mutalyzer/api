@@ -14,7 +14,7 @@ parser.add_argument(
     default="0",
     help='Semicolon-separated genomic location ranges (e.g., 100;300_400)'
 )
-@ns.route("/related/<string:accession>")
+@ns.route("/related_references/<string:accession>")
 class RelatedReferences(Resource):
     @ns.expect(parser)
     @errors
