@@ -13,6 +13,11 @@ from .map import ns as ns_map
 from .mutate import ns as ns_mutate
 from .normalize import ns as ns_normalize
 from .delins_model import ns as ns_delins_model
+from .supremal_variants import ns as ns_supremal_variants
+from .equivalent_description_on_overlap_transcript import ns as ns_equivalent_hgvs
+from .overlap_mane import ns as ns_overlap_mane
+from .overlap_transcripts import ns as ns_overlap_transcripts
+from .all_annotated_transcripts import ns as ns_annotated_transcripts
 from .position_convert import ns as ns_position_convert
 from .reference_model import ns as ns_reference_model
 from .related import ns as ns_related_references
@@ -74,6 +79,12 @@ api.add_namespace(ns_reference_model)
 api.add_namespace(ns_related_references)
 api.add_namespace(ns_position_convert)
 api.add_namespace(ns_description_extract)
+api.add_namespace(ns_overlap_transcripts)
+api.add_namespace(ns_supremal_variants)
+api.add_namespace(ns_equivalent_hgvs)
+api.add_namespace(ns_annotated_transcripts)
+api.add_namespace(ns_overlap_mane)
+api.add_namespace(ns_supremal_variants)
 api.add_namespace(ns_get_selectors)
 api.add_namespace(ns_view_variants)
 api.add_namespace(ns_spdi_converter)
