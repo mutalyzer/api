@@ -18,6 +18,7 @@ from .equivalent_description_on_overlap_transcript import ns as ns_equivalent_hg
 from .overlap_mane import ns as ns_overlap_mane
 from .overlap_genes import ns as ns_overlap_genes
 from .all_annotated_genes import ns as ns_annotated_genes
+from .annotated_transcripts import ns as ns_annotated_transcripts
 from .position_convert import ns as ns_position_convert
 from .reference_model import ns as ns_reference_model
 from .related import ns as ns_related_references
@@ -83,6 +84,7 @@ api.add_namespace(ns_overlap_genes)
 api.add_namespace(ns_supremal_variants)
 api.add_namespace(ns_equivalent_hgvs)
 api.add_namespace(ns_annotated_genes)
+api.add_namespace(ns_annotated_transcripts)
 api.add_namespace(ns_overlap_mane)
 api.add_namespace(ns_supremal_variants)
 api.add_namespace(ns_get_selectors)
