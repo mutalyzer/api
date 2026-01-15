@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource, reqparse
-from mutalyzer.equivalent import overlap_transcripts
+from mutalyzer.equivalent import overlap_genes
 from .common import errors
 
 ns = Namespace("equivalent_hgvs")
@@ -19,13 +19,13 @@ _args.add_argument(
     help="End position (integer)."
 )
 
-@ns.route("/transcripts/overlap/<string:reference_id>")
-class OverlapTranscripts(Resource):
+@ns.route("/genes/overlap/<string:reference_id>")
+class OverlapGenes(Resource):
     @errors
     @ns.expect(_args)
     def get(self, reference_id):
-        """Obtain overlapping transcripts from input reference and location."""
+        """Obtain overlapping genes from input reference and location."""
         args = _args.parse_args()
         start = args["start"]
         end = args["end"]
-        return overlap_transcripts(reference_id, start, end)
+        return overlap_genes(reference_id, start, end)

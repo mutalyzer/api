@@ -7,10 +7,9 @@ ns = Namespace("equivalent_hgvs")
 _args = reqparse.RequestParser()
 
 _args.add_argument(
-    "selectors",
+    "selector_id",
     type=str,
-    action="append",
-    help="Selector IDs.",
+    help="Selector ID.",
     required=True,
 )
 
@@ -19,5 +18,5 @@ class EquivalentHGVS(Resource):
     @ns.expect(_args)
     @errors
     def get(self, description):
-        """Output equivalent desctiptions on a list of selectors/transcripts."""
+        """Output equivalent descriptions on a selector."""
         return convert_description(description, **_args.parse_args())
