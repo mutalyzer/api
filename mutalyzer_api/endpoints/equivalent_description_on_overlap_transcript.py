@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource, reqparse, inputs
-from mutalyzer.equivalent import convert_description
+from mutalyzer.equivalent import convert_to_selector_description
 from .common import errors
 
 ns = Namespace("equivalent_hgvs")
@@ -19,4 +19,4 @@ class EquivalentHGVS(Resource):
     @errors
     def get(self, description):
         """Output equivalent descriptions on a selector."""
-        return convert_description(description, **_args.parse_args())
+        return convert_to_selector_description(description, **_args.parse_args())

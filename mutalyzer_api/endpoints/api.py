@@ -15,6 +15,7 @@ from .normalize import ns as ns_normalize
 from .delins_model import ns as ns_delins_model
 from .supremal_variants import ns as ns_supremal_variants
 from .equivalent_description_on_overlap_transcript import ns as ns_equivalent_hgvs
+from .equivalent_genomic_description import ns as ns_equivalent_genomic_hgvs
 from .overlap_mane import ns as ns_overlap_mane
 from .overlap_genes import ns as ns_overlap_genes
 from .all_annotated_genes import ns as ns_annotated_genes
@@ -83,6 +84,7 @@ api.add_namespace(ns_description_extract)
 api.add_namespace(ns_overlap_genes)
 api.add_namespace(ns_supremal_variants)
 api.add_namespace(ns_equivalent_hgvs)
+api.add_namespace(ns_equivalent_genomic_hgvs)
 api.add_namespace(ns_annotated_genes)
 api.add_namespace(ns_annotated_transcripts)
 api.add_namespace(ns_overlap_mane)
