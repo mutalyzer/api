@@ -13,10 +13,10 @@ _args.add_argument(
     required=True,
 )
 
-@ns.route("/on_selectors/<string:description>")
+@ns.route("/to-selector/<string:description>")
 class EquivalentHGVS(Resource):
     @ns.expect(_args)
     @errors
     def get(self, description):
-        """Output equivalent descriptions on a selector."""
+        """Output equivalent description on a selector."""
         return convert_to_selector_description(description, **_args.parse_args())

@@ -4,9 +4,9 @@ from .common import errors
 
 ns = Namespace("equivalent_hgvs")
 
-@ns.route("/genomic_equivalent_description/<string:description>")
+@ns.route("/to-genomic/<string:description>")
 class EquivalentHGVS(Resource):
     @errors
     def get(self, description):
-        """Output equivalent descriptions on a selector."""
+        """Output genomic equivalent description."""
         return convert_to_genomic_description(description)

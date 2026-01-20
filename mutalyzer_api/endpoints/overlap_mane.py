@@ -19,7 +19,7 @@ _args.add_argument(
     help="End position (integer)."
 )
 
-@ns.route("/transcripts/overlap_mane/<string:reference_id>")
+@ns.route("/<string:reference_id>/transcripts/overlap-mane")
 class OverlapMANE(Resource):
     @errors
     @ns.expect(_args)
