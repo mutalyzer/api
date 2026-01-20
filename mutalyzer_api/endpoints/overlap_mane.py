@@ -4,28 +4,9 @@ from .common import errors
 
 ns = Namespace("equivalent_hgvs")
 
-# define query parameters parser
-_args = reqparse.RequestParser()
-_args.add_argument(
-    "start",
-    type=int,
-    required=True,
-    help="Start position (integer)."
-)
-_args.add_argument(
-    "end",
-    type=int,
-    required=True,
-    help="End position (integer)."
-)
-
-@ns.route("/<string:reference_id>/transcripts/overlap-mane")
-class OverlapMANE(Resource):
+@ns.route("/<string:reference_id>/transcripts/MANE/on-gene/<string:gene_symbol>")
+class AnnotatedTranscripts(Resource):
     @errors
-    @ns.expect(_args)
-    def get(self, reference_id):
-        """Obtain overlapping MANE Select transcripts from input reference and location."""
-        args = _args.parse_args()
-        start = args["start"]
-        end = args["end"]
-        return overlap_mane_selectors(reference_id, start, end)
+    def get(self, reference_id, gene_symbol):
+        """List all annotated transcripts for a gene under a reference sequence."""
+        return overlap_mane_selectors(reference_id, gene_symbol)

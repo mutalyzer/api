@@ -26,5 +26,3 @@ class Genes(Resource):
             if start > end:
                 return {"Infos": "'start' must be no less than 'end'."}, 400
             return overlap_genes(reference_id, start, end)
-
-        return overlap_genes(reference_id)

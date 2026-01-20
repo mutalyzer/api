@@ -4,7 +4,7 @@ from .common import errors
 
 ns = Namespace("equivalent_hgvs")
 
-@ns.route("/<string:reference_id>/transcripts/on-gene/<string:gene_symbol>")
+@ns.route("/<string:reference_id>/transcripts/all/on-gene/<string:gene_symbol>")
 class AnnotatedTranscripts(Resource):
     @errors
     def get(self, reference_id, gene_symbol):
