@@ -12,3 +12,4 @@ normalizer/__pycache__/
 
 tests/data/*.json
 apis
+cache/
