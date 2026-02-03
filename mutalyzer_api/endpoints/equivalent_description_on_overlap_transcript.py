@@ -7,16 +7,24 @@ ns = Namespace("equivalent_hgvs")
 _args = reqparse.RequestParser()
 
 _args.add_argument(
+    "description",
+    type=str,
+    help="Variant description.",
+    required=True,
+)
+
+_args.add_argument(
     "selector_id",
     type=str,
     help="Selector ID.",
     required=True,
 )
 
-@ns.route("/to-selector/<string:description>")
-class EquivalentHGVS(Resource):
+@ns.route("/to_selector/")
+class EquivalentHGVStoSelector(Resource):
     @ns.expect(_args)
     @errors
-    def get(self, description):
+    def get(self):
         """Output equivalent description on a selector."""
-        return convert_to_selector_description(description, **_args.parse_args())
+        args = _args.parse_args()
+        return convert_to_selector_description(**args)
