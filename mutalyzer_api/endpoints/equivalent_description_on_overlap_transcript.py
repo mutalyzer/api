@@ -20,7 +20,7 @@ _args.add_argument(
     required=True,
 )
 
-@ns.route("/to_selector/")
+@ns.route("/to_transcript/")
 class EquivalentHGVStoSelector(Resource):
     @ns.expect(_args)
     @errors
