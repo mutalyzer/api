@@ -4,20 +4,18 @@ from flask import Blueprint, url_for
 from flask_restx import Api, apidoc, Namespace, Resource
 
 from mutalyzer.util import log_dir
-from .back_translate import ns as ns_back_translate
-from .compare import ns as ns_compare
-from .description_extract import ns as ns_description_extract
-from .description_to_model import ns as ns_description_to_model
-from .get_selectors import ns as ns_get_selectors
-from .map import ns as ns_map
-from .mutate import ns as ns_mutate
-from .normalize import ns as ns_normalize
-from .delins_model import ns as ns_delins_model
-from .position_convert import ns as ns_position_convert
-from .reference_model import ns as ns_reference_model
-from .related import ns as ns_related_references
-from .spdi_converter import ns as ns_spdi_converter
-from .view_variants import ns as ns_view_variants
+from .equivalent_description_on_overlap_transcript import ns as ns_equivalent_hgvs
+from .equivalent_genomic_description import ns as ns_equivalent_genomic_hgvs
+from .overlap_mane import ns as ns_overlap_mane
+from .overlap_genes import ns as ns_overlap_genes
+from .all_annotated_genes import ns as ns_annotated_genes
+from .annotated_transcripts import ns as ns_annotated_transcripts
+from .coordinate_to_g import ns as ns_coordinate_to_g
+from .g_to_coordinate import ns as ns_g_to_coordinate
+from .c_to_coordinate import ns as ns_c_to_coordinate
+from .coordinate_to_c import ns as ns_coordinate_to_c
+from .p_to_coordinate import ns as ns_p_to_coordinate
+from .coordinate_to_p import ns as ns_coordinate_to_p
 
 from pkg_resources import get_distribution
 
