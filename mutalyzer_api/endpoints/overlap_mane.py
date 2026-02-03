@@ -8,5 +8,5 @@ ns = Namespace("equivalent_hgvs")
 class AnnotatedTranscripts(Resource):
     @errors
     def get(self, reference_id, gene_symbol):
-        """List all annotated transcripts for a gene under a reference sequence."""
+        """Get a MANE Select transcript for a gene under a reference sequence."""
         return overlap_mane_selectors(reference_id, gene_symbol)
