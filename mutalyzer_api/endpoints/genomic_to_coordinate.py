@@ -15,6 +15,7 @@ _args.add_argument(
 
 
 @ns.route("/genomic_to_coordinate/")
+@ns.param('position', 'Position in HGVS genomic model.', example=100)
 class GenomicToCoordinate(Resource):
     @ns.expect(_args)
     @errors

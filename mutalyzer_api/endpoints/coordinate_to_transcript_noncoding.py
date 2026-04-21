@@ -16,11 +16,13 @@ _args.add_argument(
 _args.add_argument(
     "coordinate",
     type=int,
-    help="Zero based coordinate on transcript sequence.",
+    help="Zero based coordinate on reference sequence.",
     required=True
 )
 
 @ns.route("/coordinate_to_transcript_noncoding")
+@ns.param('coordinate', 'Zero-based coordinate on reference sequence.', example=2000)
+@ns.param('transcript_id', 'Transcript ID.', example='NR_001564.3')
 class CoordinateToNoncodingNoSelector(Resource):
     @ns.expect(_args)
     @errors

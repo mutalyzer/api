@@ -28,6 +28,9 @@ _args.add_argument(
 )
 
 @ns.route("/coordinate_to_genomic_noncoding")
+@ns.param('coordinate', 'Zero-based coordinate on reference sequence.', example=73852615)
+@ns.param('transcript_id', 'Transcript ID.', example='NR_001564.3')
+@ns.param('reference_id', 'Reference ID.', example='NC_000023.11')
 class CoordinateToNoncodingSelector(Resource):
     @ns.expect(_args)
     @errors

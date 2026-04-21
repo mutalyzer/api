@@ -1,7 +1,6 @@
-from flask_restx import Namespace, Resource, reqparse, inputs
+from flask_restx import Namespace, Resource, reqparse
 from mutalyzer.positions import coordinate_to_coding
 from .common import errors
-from dataclasses import asdict
 
 
 ns = Namespace("position_converter", path="/")
@@ -25,11 +24,14 @@ _args.add_argument(
 _args.add_argument(
     "coordinate",
     type=int,
-    help="Zero based coordinate on reference sequence.",
-    required=True
+    help="Zero-based coordinate on reference sequence.",
+    required=True,
 )
 
 @ns.route("/coordinate_to_genomic_coding")
+@ns.param('coordinate', 'Zero-based coordinate on reference sequence.', example=12345)
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
+@ns.param('reference_id', 'Reference ID.', example='NG_012337.3')
 class CoordinateToCodingSelector(Resource):
     @ns.expect(_args)
     @errors

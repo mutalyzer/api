@@ -28,6 +28,9 @@ _args.add_argument(
 )
 
 @ns.route("/coordinate_to_transcript_protein/")
+@ns.param('coordinate', 'Zero-based coordinate on reference sequence.', example=73852615)
+@ns.param('protein_id', 'Protein ID.', example='NP_002993.1')
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
 class CoordinateToTranscriptProtein(Resource):
     @ns.expect(_args)
     @errors

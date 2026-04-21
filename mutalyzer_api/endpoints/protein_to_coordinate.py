@@ -16,6 +16,7 @@ _args.add_argument(
 
 
 @ns.route("/protein_to_coordinate/")
+@ns.param('position', 'Zero based position on reference sequence.', example=100)
 class ProteinToCoordinate(Resource):
     @ns.expect(_args)
     @errors

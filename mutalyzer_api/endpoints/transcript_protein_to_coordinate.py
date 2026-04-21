@@ -28,16 +28,29 @@ _args.add_argument(
 )
 
 _args.add_argument(
+    "offset",
+    type=int,
+    help="Offset in HGVS protein model.",
+    required=False,
+    default=0
+)
+
+_args.add_argument(
     "position_in_codon",
     type=int,
     help="Position in the codon, 1, 2, or 3.",
-    required=True,
+    required=False,
     choices=[1, 2, 3],
     default=1
 )
 
 
 @ns.route("/transcript_protein_to_coordinate/")
+@ns.param('position_in_codon', 'Position in the codon, 1, 2, or 3.', example=1)
+@ns.param('offset', 'Offset in HGVS protein model.', example=0)
+@ns.param('position', 'Position in HGVS protein model.', example=10)
+@ns.param('protein_id', 'Protein ID.', example='NP_002993.1')
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
 class TranscriptProteinToCoordinate(Resource):
     @ns.expect(_args)
     @errors

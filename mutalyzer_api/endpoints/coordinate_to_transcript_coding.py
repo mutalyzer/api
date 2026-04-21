@@ -22,6 +22,8 @@ _args.add_argument(
 
 
 @ns.route("/coordinate_to_transcript_coding")
+@ns.param('coordinate', 'Zero-based coordinate on reference sequence.', example=100)
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
 class CodingToCoordinateNoSelector(Resource):
     @ns.expect(_args)
     @errors

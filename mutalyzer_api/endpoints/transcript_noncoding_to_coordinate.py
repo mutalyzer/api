@@ -14,13 +14,6 @@ _args.add_argument(
 )
 
 _args.add_argument(
-    "protein_id",
-    type=str,
-    help="Protein ID.",
-    required=True
-)
-
-_args.add_argument(
     "position",
     type=int,
     help="Position in HGVS non-coding model.",
@@ -28,17 +21,21 @@ _args.add_argument(
 )
 
 _args.add_argument(
-    "position_in_codon",
+    "offset",
     type=int,
-    help="Position in the codon, 1, 2, or 3.",
-    choices=[1, 2, 3],
-    required=True,
-    default=1
+    help="Offset in HGVS non-coding model.",
+    required=False,
+    default=0
 )
 
 
 
+
 @ns.route("/transcript_noncoding_to_coordinate/")
+@ns.param('offset', 'Offset in HGVS non-coding model.', example=0)
+@ns.param('position', 'Position in HGVS non-coding model.', example=100)
+@ns.param('transcript_id', 'Transcript ID.', example='NR_001564.3')
+
 class TranscriptNoncodingToCoordinate(Resource):
     @ns.expect(_args)
     @errors
@@ -47,9 +44,9 @@ class TranscriptNoncodingToCoordinate(Resource):
         args = _args.parse_args()
         transcript_id = args.get("transcript_id")
         position = args.get("position")
-        position_in_codon = args.get("position_in_codon")
+        offset = args.get("offset")
 
-        position_model = {'position': position, 'position_in_codon': position_in_codon, 'offset': 0, 'region': ""}
+        position_model = {'position': position, 'position_in_codon': 1, 'offset': offset, 'region': ""}
 
         try:
             coordinate = transcript_noncoding_to_coordinate(transcript_id, position_model)

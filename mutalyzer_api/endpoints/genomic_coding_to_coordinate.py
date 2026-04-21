@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource, reqparse, inputs
-from mutalyzer.positions import genomic_noncoding_to_coordinate
+from mutalyzer.positions import genomic_coding_to_coordinate
 from .common import errors
 
 ns = Namespace("position_converter", path="/")
@@ -23,14 +23,14 @@ _args.add_argument(
 _args.add_argument(
     "position",
     type=int,
-    help="Position in HGVS non-coding model.",
+    help="Position in HGVS coding model.",
     required=True
 )
 
 _args.add_argument(
     "offset",
     type=int,
-    help="Offset in HGVS non-coding model.",
+    help="Offset in HGVS coding model.",
     required=False,
     default=0
 )
@@ -38,18 +38,24 @@ _args.add_argument(
 _args.add_argument(
     "region",
     type=str,
-    help=("Region type in HGVS non-coding model."),
-    required=True,
-    choices=["u: upstream", ": transcribed region",  "d: downstream"],
+    help=("Region type in HGVS coding model."),
+    required=False,
+    default="cds",
+    choices=["u: upstream", "-: 5 prime", ": cds", "*: 3 prime", "d: downstream"],
 )
 
 
-@ns.route("/genomic_noncoding_to_coordinate/")
-class GenomicNoncodingToCoordinate(Resource):
+@ns.route("/genomic_coding_to_coordinate/")
+@ns.param('region', 'Region type in HGVS coding model.', example='cds')
+@ns.param("offset", "Offset in HGVS coding model.", example=-10)
+@ns.param('position', 'Position in HGVS coding model.', example=53)
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
+@ns.param('reference_id', 'Reference ID.', example='NG_012337.3')
+class GenomicCodingToCoordinate(Resource):
     @ns.expect(_args)
     @errors
     def get(self):
-        """Convert from non-coding position to coordinate."""
+        """Convert from coding position to coordinate."""
         args = _args.parse_args()
         ref_id = args.get("reference_id")
         transcript_id = args.get("transcript_id")
@@ -60,7 +66,7 @@ class GenomicNoncodingToCoordinate(Resource):
         position_model = {'position': position, 'offset': offset, 'region': region}
 
         try:
-            coordinate = genomic_noncoding_to_coordinate(ref_id, transcript_id, position_model)
+            coordinate = genomic_coding_to_coordinate(ref_id, transcript_id, position_model)
             return coordinate
         except Exception as e:
             return {"errors": [str(e)]}

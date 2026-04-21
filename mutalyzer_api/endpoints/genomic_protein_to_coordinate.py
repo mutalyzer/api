@@ -38,6 +38,10 @@ _args.add_argument(
 
 
 @ns.route("/genomic_protein_to_coordinate/")
+@ns.param('position_in_codon', 'Position in the codon, 1, 2, or 3.', example=1)
+@ns.param('position', 'Position in HGVS protein model.', example=10)
+@ns.param('protein_id', 'Protein ID.', example='NP_002993.1')
+@ns.param('reference_id', 'Reference ID.', example='NG_012337.3')
 class GenomicProteinToCoordinate(Resource):
     @ns.expect(_args)
     @errors

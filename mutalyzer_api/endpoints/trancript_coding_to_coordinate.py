@@ -22,14 +22,27 @@ _args.add_argument(
 )
 
 _args.add_argument(
+    "offset",
+    type=int,
+    help="Offset in HGVS coding model.",
+    required=False,
+    default=0
+)
+
+_args.add_argument(
     "region",
     type=str,
     help=("Region type in HGVS coding model."),
-    required=True,
+    required=False,
+    default="cds",
     choices=["-: 5 prime", ": cds", "*: 3 prime",],
 )
 
 @ns.route("/trancript_coding_to_coordinate/")
+@ns.param('region', 'Region type in HGVS coding model.', example='cds')
+@ns.param("offset", "Offset in HGVS coding model.", example=0)
+@ns.param('position', 'Position in HGVS coding model.', example=100)
+@ns.param('transcript_id', 'Transcript ID.', example='NM_003002.4')
 class TrancriptCodingToCoordinate(Resource):
     @ns.expect(_args)
     @errors
@@ -38,9 +51,10 @@ class TrancriptCodingToCoordinate(Resource):
         args = _args.parse_args()
         transcript_id = args.get("transcript_id")
         position = args.get("position")
+        offset = args.get("offset")
         region = args.get("region").split(":")[0]
 
-        position_model = {'position': position, 'offset': 0, 'region': region}
+        position_model = {'position': position, 'offset': offset, 'region': region}
 
         try:
             coordinate = transcript_coding_to_coordinate(transcript_id, position_model)
